@@ -905,9 +905,14 @@ class TFT_eSPI : public Print { friend class TFT_eSprite; // Sprite class has ac
     #include "Extensions/Touch.h"        // Loaded if TOUCH_CS is defined by user
   #endif
 #else
+  #ifdef TOUCH_SOFT
+    #include "Extensions/TouchSoft.h"        // Loaded if TOUCH_CS is defined by user
+
+  #else    
     #if !defined(DISABLE_ALL_LIBRARY_WARNINGS)
       #warning >>>>------>> TOUCH_CS pin not defined, TFT_eSPI touch functions will not be available!
     #endif
+  #endif
 #endif
 
 // Load the Anti-aliased font extension
